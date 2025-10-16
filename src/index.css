@@ -5,7 +5,7 @@
 }
 
 /* فونت شبنم از CDN */
-@import url("https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css");
+@import url("https://v1.fontapi.ir/css/Shabnam");
 
 html {
   direction: rtl;

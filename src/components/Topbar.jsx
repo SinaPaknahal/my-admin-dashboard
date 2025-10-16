@@ -25,7 +25,6 @@ export default function Topbar({ isDark, setIsDark, setMobileOpen }) {
       </button>
 
       <div className="flex items-center gap-3 ms-auto">
-        {/* دارک/لایت مود */}
         <button
           onClick={() => setIsDark(!isDark)}
           className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
@@ -33,7 +32,6 @@ export default function Topbar({ isDark, setIsDark, setMobileOpen }) {
           {isDark ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
-        {/* نوتیفیکیشن */}
         <div className="relative">
           <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 relative transition-colors duration-300">
             <Bell size={20} />
@@ -43,7 +41,6 @@ export default function Topbar({ isDark, setIsDark, setMobileOpen }) {
           </button>
         </div>
 
-        {/* پروفایل */}
         <div className="relative" ref={profileRef}>
           <button
             onClick={() => setProfileOpen(!profileOpen)}
@@ -60,15 +57,10 @@ export default function Topbar({ isDark, setIsDark, setMobileOpen }) {
                 <p className="text-xs text-gray-500 dark:text-gray-400">مدیر سیستم</p>
               </div>
               <ul className="text-sm">
-                <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-                  پروفایل
-                </li>
-                <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
-                  تنظیمات
-                </li>
+                <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">پروفایل</li>
+                <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">تنظیمات</li>
                 <li className="px-4 py-2 text-red-500 hover:bg-red-50 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2">
-                  <LogOut size={16} />
-                  خروج
+                  <LogOut size={16} /> خروج
                 </li>
               </ul>
             </div>
