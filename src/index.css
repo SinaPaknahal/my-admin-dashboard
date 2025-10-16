@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --font-sans: "Shabnam", sans-serif;
+}
+
+/* فونت شبنم از CDN */
+@import url("https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css");
+
+html {
+  direction: rtl;
+  font-family: "Shabnam", sans-serif;
+}
+
+body {
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors;
+}
+/* ترنزیشن نرم برای تغییر رنگ تمام عناصر */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body, div, header, main, aside, nav, button, span, h1, h2, p {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+/* انیمیشن منوی پروفایل */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 0.2s ease forwards; }
+
+/* ترنزیشن نرم تغییر رنگ کل المان‌ها */
+html, body, div, header, main, aside, nav, button, span, h1, h2, p {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
