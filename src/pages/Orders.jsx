@@ -1,49 +1,31 @@
 import { motion } from "framer-motion";
-import { ShoppingBag } from "lucide-react";
 
-const initialOrders = [
-  { id: 1, customer: "علی رضایی", total: "۳۲۰,۰۰۰ تومان", status: "در انتظار" },
-  { id: 2, customer: "مریم احمدی", total: "۵۰۰,۰۰۰ تومان", status: "پرداخت شده" },
-  { id: 3, customer: "زهرا حسینی", total: "۱,۲۰۰,۰۰۰ تومان", status: "لغو شده" },
+const activities = [
+  { id: 1, user: "علی رضایی", action: "سفارش جدید ثبت شد", time: "۲ ساعت پیش" },
+  { id: 2, user: "مریم احمدی", action: "وضعیت سفارش تغییر کرد", time: "۴ ساعت پیش" },
+  { id: 3, user: "زهرا حسینی", action: "پروفایل به‌روزرسانی شد", time: "۱ روز پیش" },
+  { id: 4, user: "احمد کریمی", action: "ثبت سفارش جدید", time: "۲ روز پیش" },
 ];
 
-export default function Orders() {
+export default function RecentActivity() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg"
-    >
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
-        <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center gap-2">
-          <ShoppingBag size={22} />
-          مدیریت سفارش‌ها
-        </h2>
-      </div>
-
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm text-right">
-          <thead>
-            <tr className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
-              <th className="py-3 px-4">شماره</th>
-              <th className="py-3 px-4">مشتری</th>
-              <th className="py-3 px-4">مبلغ</th>
-              <th className="py-3 px-4">وضعیت</th>
-            </tr>
-          </thead>
-          <tbody>
-            {initialOrders.map((order) => (
-              <tr key={order.id} className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/40">
-                <td className="py-3 px-4">{order.id}</td>
-                <td className="py-3 px-4">{order.customer}</td>
-                <td className="py-3 px-4">{order.total}</td>
-                <td className="py-3 px-4">{order.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </motion.div>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm transition-all">
+      <h3 className="text-gray-800 dark:text-gray-100 font-bold mb-4 text-lg">فعالیت‌های اخیر</h3>
+      <ul className="space-y-3 max-h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 scrollbar-track-gray-100 dark:scrollbar-track-gray-800">
+        {activities.map((act, i) => (
+          <motion.li
+            key={act.id}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg flex justify-between items-center shadow-sm hover:shadow-md transition"
+          >
+            <span className="text-gray-700 dark:text-gray-200 font-medium">{act.user}:</span>
+            <span className="text-gray-500 dark:text-gray-400 text-sm">{act.action}</span>
+            <span className="text-gray-400 dark:text-gray-300 text-xs">{act.time}</span>
+          </motion.li>
+        ))}
+      </ul>
+    </div>
   );
 }

@@ -1,14 +1,13 @@
-import { Home, ShoppingBag, Users, Settings, ChevronRight, X } from "lucide-react";
+import { Home, ShoppingBag, Users, Settings, Package, ChevronRight, X } from "lucide-react"; 
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobileOpen }) {
-  const navigate = useNavigate();
-
   const menus = [
-    { title: "داشبورد", icon: <Home size={20} />, path: "/" },
+    { title: "داشبورد", icon: <Home size={20} />, path: "/dashboard" },
     { title: "سفارش‌ها", icon: <ShoppingBag size={20} />, path: "/orders" },
     { title: "کاربران", icon: <Users size={20} />, path: "/users" },
+    { title: "محصولات", icon: <Package size={20} />, path: "/products" }, // 👈 از Package استفاده کن
     { title: "تنظیمات", icon: <Settings size={20} />, path: "/settings" },
   ];
 
@@ -30,8 +29,12 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
           ${collapsed ? "w-[80px]" : "w-[240px]"} 
           ${mobileOpen ? "translate-x-0" : "translate-x-full"} md:translate-x-0`}
       >
+        {/* هدر سایدبار */}
         <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-700 md:border-none">
-          {!collapsed && <h1 className="text-xl font-bold text-green-600 select-none">فروشگاه</h1>}
+          {!collapsed && (
+            <h1 className="text-xl font-bold text-green-600 select-none">فروشگاه</h1>
+          )}
+
           <div className="flex items-center gap-1">
             <button
               onClick={() => setCollapsed(!collapsed)}
@@ -49,19 +52,24 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
           </div>
         </div>
 
+        {/* منوها */}
         <nav className="mt-4 space-y-1">
           {menus.map((menu, i) => (
-            <div
+            <NavLink
               key={i}
-              onClick={() => {
-                navigate(menu.path);
-                setMobileOpen(false);
-              }}
-              className="flex items-center gap-3 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer rounded-xl transition"
+              to={menu.path}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-2 rounded-xl transition ${
+                  isActive
+                    ? "bg-green-500 text-white"
+                    : "hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200"
+                }`
+              }
+              onClick={() => setMobileOpen(false)}
             >
               {menu.icon}
               {!collapsed && <span>{menu.title}</span>}
-            </div>
+            </NavLink>
           ))}
         </nav>
       </aside>
