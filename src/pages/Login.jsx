@@ -26,7 +26,7 @@ export default function Login({ onLogin }) {
         className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg w-96"
       >
         <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100 text-center">
-          ورود به داشبورد
+          ورود به داشبورد 
         </h2>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -34,6 +34,7 @@ export default function Login({ onLogin }) {
             <label className="block mb-1 text-gray-700 dark:text-gray-200">ایمیل</label>
             <input
               type="email"
+              placeholder="a@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -45,6 +46,7 @@ export default function Login({ onLogin }) {
             <label className="block mb-1 text-gray-700 dark:text-gray-200">رمز عبور</label>
             <input
               type="password"
+              placeholder="123456"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
