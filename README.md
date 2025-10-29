@@ -27,7 +27,7 @@
 
 ```bash
 # 1. کلون کردن پروژه
-git clone https://github.com/USERNAME/react-persian-admin-dashboard.git
+git clone https://github.com/SinaPaknahal/react-persian-admin-dashboard.git
 
 # 2. ورود به پوشه پروژه
 cd react-persian-admin-dashboard
