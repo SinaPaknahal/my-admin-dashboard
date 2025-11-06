@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+@import 'leaflet/dist/leaflet.css';
+
 @theme {
   --font-sans: "Shabnam", sans-serif;
 }
